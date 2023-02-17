@@ -1,4 +1,5 @@
 #!/bin/sh
+#gianakaris was here ;)
 
 version_number="4.1.0"
 
@@ -77,7 +78,7 @@ version_info() {
 }
 
 update_script() {
-	update="$(curl -s --cipher "AES256-SHA256" --tls-max "1.2" -A "$agent" "https://raw.githubusercontent.com/pystardust/ani-cli/master/ani-cli")" || die "Connection error"
+	update="$(curl -s --cipher "AES256-SHA256" --tls-max "1.2" -A "$agent" "https://raw.githubusercontent.com/gianakaris/ani-cli-sync/master/ani-cli")" || die "Connection error"
 	update="$(printf '%s\n' "$update" | diff -u "$0" -)"
 	if [ -z "$update" ]; then
 		printf "Script is up to date :)\n"
@@ -273,7 +274,7 @@ use_external_menu="${ANI_CLI_EXTERNAL_MENU:-0}"
 [ "$use_external_menu" = "1" ] && multi_selection_flag="${ANI_CLI_MULTI_SELECTION:-"-multi-select"}"
 cache_dir="${ANI_CLI_CACHE_DIR:-${XDG_CACHE_HOME:-$HOME/.cache}/ani-cli}"
 [ ! -d "$cache_dir" ] && mkdir -p "$cache_dir"
-hist_dir="${ANI_CLI_HIST_DIR:-${XDG_STATE_HOME:-$HOME/.local/state}/ani-cli}"
+hist_dir="${ANI_CLI_HIST_DIR:-${XDG_STATE_HOME:-/storage/emulated/0/.config}/ani-cli}"
 [ ! -d "$hist_dir" ] && mkdir -p "$hist_dir"
 histfile="$hist_dir/ani-hsts"
 [ ! -f "$histfile" ] && : >"$histfile"
