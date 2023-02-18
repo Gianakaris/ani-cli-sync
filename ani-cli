@@ -78,7 +78,7 @@ version_info() {
 }
 
 update_script() {
-	update="$(curl -s --cipher "AES256-SHA256" --tls-max "1.2" -A "$agent" "https://raw.githubusercontent.com/gianakaris/ani-cli-sync/master/ani-cli")" || die "Connection error"
+	update="$(wget -q -O - -U "$agent" "https://raw.githubusercontent.com/gianakaris/ani-cli-sync/master/ani-cli")" || die "Connection error"
 	update="$(printf '%s\n' "$update" | diff -u "$0" -)"
 	if [ -z "$update" ]; then
 		printf "Script is up to date :)\n"
