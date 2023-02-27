@@ -1,5 +1,5 @@
 #!/bin/sh
-#gianakaris was here ;)
+#gianakaris' stamp of approval ^_^
 
 version_number="4.1.4"
 
@@ -78,13 +78,7 @@ version_info() {
 }
 
 update_script() {
-<<<<<<< HEAD
-	update="$(wget -q -O - -U "$agent" "https://raw.githubusercontent.com/gianakaris/ani-cli-sync/master/ani-cli")" || die "Connection error"
-||||||| 94e78d5
-	update="$(curl -s --cipher "AES256-SHA256" --tls-max "1.2" -A "$agent" "https://raw.githubusercontent.com/pystardust/ani-cli/master/ani-cli")" || die "Connection error"
-=======
 	update="$(curl -s -A "$agent" "https://raw.githubusercontent.com/pystardust/ani-cli/master/ani-cli")" || die "Connection error"
->>>>>>> upstream/master
 	update="$(printf '%s\n' "$update" | diff -u "$0" -)"
 	if [ -z "$update" ]; then
 		printf "Script is up to date :)\n"
