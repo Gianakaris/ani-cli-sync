@@ -19,7 +19,7 @@
 </p>
 
 <h3 align="center">
-A cli to browse and watch anime (alone AND with friends). This tool scrapes the site <a href="https://allanime.co/">allanime.</a>
+A cli to browse and watch anime (alone AND with friends). This tool scrapes the site <a href="https://allanime.to/">allanime.</a>
 </h3>
 	
 <h1 align="center">
@@ -167,7 +167,7 @@ scoop install ani-cli
 rm -rf "/usr/local/share/ani-cli" "/usr/local/bin/ani-cli" "/usr/local/bin/UI" /usr/local/bin/player_* #If some of these aren't found, it's not a problem
 git clone "https://github.com/pystardust/ani-cli.git"
 cp ani-cli/ani-cli /usr/bin
-rm -rf /ani-cli
+rm -rf ani-cli
 ```
 
 #### Dependencies
@@ -192,7 +192,7 @@ pkg up -y
 rm -rf "$PREFIX/share/ani-cli" "$PREFIX/bin/ani-cli" "$PREFIX/bin/UI" "$PREFIX"/local/bin/player_* #If some of these aren't found, it's not a problem
 git clone "https://github.com/pystardust/ani-cli.git"
 cp ani-cli/ani-cli "$PREFIX"/bin
-rm -rf /ani-cli
+rm -rf ani-cli
 ```
 
 For players you can use the apk (playstore/fdroid) versions of mpv and vlc. Note that these cannot be checked from termux so a warning is generated when checking dependencies.
