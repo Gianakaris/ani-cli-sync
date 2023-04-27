@@ -7,8 +7,9 @@
 <img src="https://img.shields.io/badge/os-android-brightgreen">
 <br>
 <h1 align="center">
-<a href="https://matrix.to/#/#ani-cli:matrix.org"><img src="https://element.io/blog/content/images/2020/07/Logomark---white-on-green.png" width="80"></a>
-<a href="https://discord.gg/aqu7GpqVmR"><img src="https://pnggrid.com/wp-content/uploads/2021/05/Discord-Logo-Square-1024x1024.png" width="80"></a>
+<a href="https://discord.gg/aqu7GpqVmR">
+<img src="https://invidget.switchblade.xyz/aqu7GpqVmR">
+</a>
 <br>
 <a href="https://github.com/port19x"><img src="https://img.shields.io/badge/lead-port19x-lightblue"></a>
 <a href="https://github.com/CoolnsX"><img src="https://img.shields.io/badge/maintainer-CoolnsX-blue"></a>
@@ -33,7 +34,7 @@ A cli to browse and watch anime (alone AND with friends). This tool scrapes the 
 - [Fixing errors](#Fixing-errors)
 - [Install](#Install)
   - [Linux](#Linux)
-   - [Debian](#Debian)
+   - [Debian](#Debian-unstable)
    - [Fedora](#Fedora)
    - [Arch](#Arch)
    - [OpenSuse Tumbleweed and Leap](#OpenSuse-Tumbleweed-and-Leap)
@@ -69,12 +70,9 @@ Otherwise you're likely to see an error like the following: ` "/usr/bin/ani-cli:
 
 ### Linux
 
-#### Debian
+#### Debian unstable
 
 ```sh
-curl -s https://Wiener234.github.io/ani-cli-ppa/KEY.gpg | sudo tee /etc/apt/trusted.gpg.d/ani-cli.asc
-curl -s https://Wiener234.github.io/ani-cli-ppa/ani-cli-debian.list | sudo tee /etc/apt/sources.list.d/ani-cli-debian.list
-sudo apt update
 sudo apt install ani-cli
 ```
 
@@ -97,6 +95,19 @@ Build and install from the AUR:
 yay -S ani-cli
 ```
 Also consider `ani-cli-git`
+
+#### Gentoo
+
+Build and install from the GURU:
+```sh
+sudo eselect repository enable guru
+sudo emaint sync -r guru
+sudo emerge -a ani-cli
+```
+Consider using the 9999 ebuild.
+```sh
+sudo emerge -a =app-misc/ani-cli-9999
+```
 
 #### OpenSuse Tumbleweed and Leap
 
@@ -173,6 +184,10 @@ rm -rf ani-cli
 #### Dependencies
 
 All dependencies can be installed with scoop (from the extras bucket), however some users experienced that installed programs aren't always added to the path. If this happens installing from winget instead usually works.
+
+Note that curl can cause issues. 
+ani-cli has been tested unsuccessfully with curl `7.83.1` and successfully with `7.86.0`.
+If you run into issues, try the scoop install or grab the newest curl you can find.
 
 ### Android
 
@@ -358,12 +373,10 @@ flatpak uninstall io.mpv.Mpv
 
 * [animdl](https://github.com/justfoolingaround/animdl): Ridiculously efficient, fast and light-weight (supports most sources: allanime, zoro ... (Python)
 * [jerry](https://github.com/justchokingaround/jerry): stream anime with anilist tracking and syncing, with discord presence (Shell)
-* [anime-helper-shell](https://github.com/Atreyagaurav/anime-helper-shell): A python shell for searching, watching, and downloading anime (Python)
 * [anipy-cli](https://github.com/sdaqo/anipy-cli): ani-cli rewritten in python (Python)
-* [dra-cla](https://github.com/CoolnsX/dra-cla): ani-cli equivalent for korean dramas (Shell)
-* [kaa.si-cli](https://github.com/Soviena/kaa.si-cli): Stream anime from kaa.si and sync with anilist (Python)
-* [lobster](https://github.com/justchokingaround/lobster): Life action movies and series fom the terminal (Shell)
-* [mangal](https://github.com/metafates/mangal): Download & read manga from any source with anilist sync (Go)
-* [mov-cli](https://github.com/mov-cli/mov-cli): Watch movies/shows in the cli (Python/Shell)
 * [saikou](https://github.com/saikou-app/saikou): Best android app for anime/manga with anilist integration (Kotlin)
-* [tv-cli](https://github.com/Spaxly/tv-cli): Watch live TV in the cli (Shell)
+* [mangal](https://github.com/metafates/mangal): Download & read manga from any source with anilist sync (Go)
+* [lobster](https://github.com/justchokingaround/lobster): Watch movies and series from the terminal (Shell)
+* [mov-cli](https://github.com/mov-cli/mov-cli): Watch movies/shows in the cli (Python/Shell)
+* [dra-cla](https://github.com/CoolnsX/dra-cla): ani-cli equivalent for korean dramas (Shell)
+* [redqu](https://github.com/port19x/redqu):  A media centric reddit client (Clojure)
