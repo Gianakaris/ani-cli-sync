@@ -1,10 +1,12 @@
 <p align=center>
 <br>
 <a href="http://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"></a>
-<img src="https://img.shields.io/badge/os-linux-brightgreen">
-<img src="https://img.shields.io/badge/os-mac-brightgreen">
-<img src="https://img.shields.io/badge/os-windows-brightgreen">
-<img src="https://img.shields.io/badge/os-android-brightgreen">
+<a href="#Linux"><img src="https://img.shields.io/badge/os-linux-brightgreen">
+<a href="#MacOS"><img src="https://img.shields.io/badge/os-mac-brightgreen">
+<a href="#Windows"><img src="https://img.shields.io/badge/os-windows-brightgreen">
+<a href="#Android"><img src="https://img.shields.io/badge/os-android-brightgreen">
+<a href="#iOS"><img src="https://img.shields.io/badge/os-ios-brightgreen">
+<a href="#Steam-deck"><img src="https://img.shields.io/badge/os-steamdeck-brightgreen">
 <br>
 <h1 align="center">
 <a href="https://discord.gg/aqu7GpqVmR">
@@ -43,6 +45,7 @@ A cli to browse and watch anime (alone AND with friends). This tool scrapes the 
   - [Windows](#Windows)
   - [Android](#Android)
   - [Steam Deck](#Steam-deck)
+  - [iOS](#iOS)
 - [Uninstall](#Uninstall)
 - [Dependencies](#Dependencies)
 - [Homies](#Homies)
@@ -90,7 +93,7 @@ sudo dnf install ani-cli
 
 #### Arch
 
-Build and install from the AUR: 
+Build and install from the AUR:
 ```sh
 yay -S ani-cli
 ```
@@ -144,17 +147,17 @@ Install [HomeBrew](https://docs.brew.sh/Installation) if not installed.
 ```sh
 rm -rf "$(brew --prefix)/share/ani-cli" "$(brew --prefix)/bin/ani-cli" "$(brew --prefix)/bin/UI" "$(brew --prefix)"/bin/player_* #If some of these aren't found, it's not a problem
 git clone "https://github.com/pystardust/ani-cli.git" && cd ./ani-cli
-cp ./ani-cli "$(brew --prefix)"/bin 
+cp ./ani-cli "$(brew --prefix)"/bin
 cd .. && rm -rf ./ani-cli
 ```
 
-*To install (with Homebrew) the dependencies required on Mac OS, you can run:* 
+*To install (with Homebrew) the dependencies required on Mac OS, you can run:*
 
 ```sh
 brew install curl grep aria2 ffmpeg git fzf && \
 brew install --cask iina
-``` 
-*Why iina and not mpv? Drop-in replacement for mpv for MacOS. Integrates well with OSX UI. Excellent support for M1. Open Source.*  
+```
+*Why iina and not mpv? Drop-in replacement for mpv for MacOS. Integrates well with OSX UI. Excellent support for M1. Open Source.*
 
 ### Windows
 
@@ -164,7 +167,7 @@ First, you'll need windows terminal preview. [(Install)](https://apps.microsoft.
 
 Then make sure git bash is installed. [(Install)](https://git-scm.com/download/win) It needs to be added to windows terminal [(Instructions)](https://stackoverflow.com/questions/56839307/adding-git-bash-to-the-new-windows-terminal)
 
-The following steps and ani-cli need to be run from git bash in windows terminal. 
+The following steps and ani-cli need to be run from git bash in windows terminal.
 
 #### Scoop bucket
 
@@ -185,7 +188,7 @@ rm -rf ani-cli
 
 All dependencies can be installed with scoop (from the extras bucket), however some users experienced that installed programs aren't always added to the path. If this happens installing from winget instead usually works.
 
-Note that curl can cause issues. 
+Note that curl can cause issues.
 ani-cli has been tested unsuccessfully with curl `7.83.1` and successfully with `7.86.0`.
 If you run into issues, try the scoop install or grab the newest curl you can find.
 
@@ -212,16 +215,40 @@ rm -rf ani-cli
 
 For players you can use the apk (playstore/fdroid) versions of mpv and vlc. Note that these cannot be checked from termux so a warning is generated when checking dependencies.
 
+### iOS
+Install iSH and VLC from the app store.
+
+Make sure apk is updated using
+```apk update; apk upgrade```
+then run this:
+```sh
+apk add grep sed curl fzf git aria2 alpine-sdk ncurses
+git clone https://github.com/Lockl00p/ffmpeglibs-iSH.git ~/ffmpeg
+cd ~/ffmpeg
+cat fmp.?? > ffmpeg.tar.gz
+tar -xvf ffmpeg.tar.gz
+cd FFmpeg
+make install
+cd
+rm -rf ffmpeg
+apk add ffmpeg
+git clone https://github.com/pystardust/ani-cli ~/.ani-cli
+cp ~/.ani-cli/ani-cli /usr/local/bin/ani-cli
+chmod +x /usr/local/bin/ani-cli
+rm -rf ~/.ani-cli
+```
+note that downloading is going to be very slow. This is an iSH issue, not an ani-cli issue.
+
 ### Steam Deck
 
 #### Copypaste script:
 
 * Switch to Desktop mode (`STEAM` Button > Power > Switch to Desktop)
 * Open `Konsole` (Steam Deck Icon in bottom left corner > System > Konsole)
-* Copy the script, paste it in the CLI and press Enter("A" button on Steam Deck) 
+* Copy the script, paste it in the CLI and press Enter("A" button on Steam Deck)
 
 ```sh
-[ ! -d ~/.local/bin ] && mkdir ~/.local/bin && echo "export $PATH=$HOME/.local/bin:$PATH" >> ".$(echo $SHELL | sed -nE "s|.*/(.*)\$|\1|p")rc" 
+[ ! -d ~/.local/bin ] && mkdir ~/.local/bin && echo "export $PATH=$HOME/.local/bin:$PATH" >> ".$(echo $SHELL | sed -nE "s|.*/(.*)\$|\1|p")rc"
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
@@ -248,7 +275,7 @@ flatpak install io.mpv.Mpv
 ```
 press enter("A" button on Steam Deck) on questions
 
-##### Install [fzf](https://github.com/junegunn/fzf): 
+##### Install [fzf](https://github.com/junegunn/fzf):
 
 ```sh
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -259,7 +286,7 @@ press enter("A" button on Steam Deck) on questions
 ##### Make a ~/.local/bin folder if doesn't exist and add it to $PATH
 
 ```sh
-[ ! -d ~/.local/bin ] && mkdir ~/.local/bin && echo "export $PATH=$HOME/.local/bin:$PATH" >> ".$(echo $SHELL | sed -nE "s|.*/(.*)\$|\1|p")rc"  
+[ ! -d ~/.local/bin ] && mkdir ~/.local/bin && echo "export $PATH=$HOME/.local/bin:$PATH" >> ".$(echo $SHELL | sed -nE "s|.*/(.*)\$|\1|p")rc"
 ```
 
 ##### Install [aria2](https://github.com/aria2/aria2) (needed for download feature only):
@@ -324,11 +351,11 @@ yay -R ani-cli
 ```sh
 scoop uninstall ani-cli
 ```
-* Linux:  
+* Linux:
 ```sh
 sudo rm "/usr/local/bin/ani-cli"
 ```
-* Mac:  
+* Mac:
 ```sh
 rm "$(brew --prefix)/bin/ani-cli"
 ```
@@ -357,7 +384,19 @@ rm -rf "~/.aria2"
 rm -rf "~/.fzf"
 flatpak uninstall io.mpv.Mpv
 ```
-
+* iOS
+```
+rm -rf /usr/local/bin/ani-cli
+```
+To uninstall FFmpeg:
+```
+rm -rf /usr/local/lib/libavutil.a /usr/local/lib/libavcodec.a /usr/local/lib/libavformat.a /usr/local/lib/pkgconfig/libavutil.a /usr/local/lib/pkgconfig/libavcodec.a /usr/local/lib/pkgconfig/libavformat.a
+apk del ffmpeg
+```
+To uninstall other dependencies:
+```
+apk del grep sed curl fzf git aria2 alpine-sdk ncurses
+```
 ## Dependencies
 
 - grep
