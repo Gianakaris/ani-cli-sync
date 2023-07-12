@@ -207,9 +207,9 @@ pkg install ani-cli
 
 ```sh
 pkg up -y
-rm -rf "$PREFIX/share/ani-cli" "$PREFIX/bin/ani-cli" "$PREFIX/bin/UI" "$PREFIX"/local/bin/player_* #If some of these aren't found, it's not a problem
-git clone "https://github.com/pystardust/ani-cli.git"
-cp ani-cli/ani-cli "$PREFIX"/bin
+rm -rf "$PREFIX/share/ani-cli" "$PREFIX/bin/ani-cli" "$PREFIX/bin/UI" "$PREFIX"/local/bin/player
+git clone "https://github.com/gianakaris/ani-cli.git"
+cp ani-cli-sync/ani-cli "$PREFIX"/bin
 rm -rf ani-cli
 ```
 
